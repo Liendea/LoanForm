@@ -11,7 +11,7 @@ function App() {
       <header>
         <Logo />
       </header>
-      <main style={currentStep === 5 ? { height: "auto" } : {}}>
+      <main>
         <LoanApplication
           currentStep={currentStep}
           setCurrentStep={setCurrentStep}

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import "./Step.css";
+import "../App.css";
 
-export default function Step1({ setFormData }) {
+export default function Step1({ setFormData, errors, setErrors }) {
   //Hämta data från localstorage och sett den lagdrade datan, om den finns, som default value
   const savedData = JSON.parse(localStorage.getItem("step1Data")) || {};
 
@@ -11,23 +11,63 @@ export default function Step1({ setFormData }) {
     savedData.personalNumber || ""
   );
 
+  // Funktion för validering
+  const validateField = (fieldName, value) => {
+    const newErrors = {};
+    // validering
+    if (fieldName === "firstName") {
+      if (!value.trim()) {
+        newErrors.firstName = "*Förnamn krävs";
+      } else {
+        delete newErrors.firstName;
+      }
+    }
+
+    if (fieldName === "lastName") {
+      if (!value.trim()) {
+        newErrors.lastName = "*Efternamn krävs";
+      } else {
+        delete newErrors.lastName;
+      }
+    }
+
+    if (fieldName === "personalNumber") {
+      if (!value) {
+        newErrors.personalNumber = "*Personnummer krävs";
+      } else {
+        const minDate = new Date("2007-01-01");
+        const selectedDate = new Date(value);
+        if (selectedDate > minDate) {
+          newErrors.personalNumber = "*Du måste vara minst 18 år";
+        } else {
+          delete newErrors.personalNumber;
+        }
+      }
+    }
+
+    setErrors(newErrors);
+  };
+
   // Uppdatera formData när lokala inputs ändras
   useEffect(() => {
-    const currentData = {
-      firstName,
-      lastName,
-      personalNumber,
-    };
+    // om inga fel finns , uppdatra formdatan
+    if (Object.keys(errors).length === 0) {
+      const currentData = {
+        firstName,
+        lastName,
+        personalNumber,
+      };
 
-    // uppdatera formdatan med den föregående datan och lägg till nuvarande datan
-    setFormData((prev) => ({
-      ...prev,
-      ...currentData,
-    }));
+      // uppdatera formdatan med den föregående datan och lägg till nuvarande datan
+      setFormData((prev) => ({
+        ...prev,
+        ...currentData,
+      }));
 
-    // Spara i localstorage
-    localStorage.setItem("step1Data", JSON.stringify(currentData));
-  }, [firstName, lastName, personalNumber, setFormData]);
+      // Spara i localstorage
+      localStorage.setItem("step1Data", JSON.stringify(currentData));
+    }
+  }, [firstName, lastName, personalNumber, errors, setFormData]);
 
   return (
     <section className="content">
@@ -39,7 +79,13 @@ export default function Step1({ setFormData }) {
           placeholder="Förnamn"
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
+          onBlur={(e) => validateField("firstName", e.target.value)}
         />
+        {errors.firstName && (
+          <p style={{ color: "red", marginBottom: "4px", textAlign: "left" }}>
+            {errors.firstName}
+          </p>
+        )}
 
         <br />
         <input
@@ -48,7 +94,11 @@ export default function Step1({ setFormData }) {
           placeholder="Efternamn"
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
+          onBlur={(e) => validateField("lastName", e.target.value)}
         />
+        {errors.lastName && (
+          <p style={{ color: "red", marginTop: "4px" }}>{errors.lastName}</p>
+        )}
 
         <br />
         <input
@@ -57,7 +107,13 @@ export default function Step1({ setFormData }) {
           placeholder="Personnumer"
           value={personalNumber}
           onChange={(e) => setPersonalNumber(e.target.value)}
+          onBlur={(e) => validateField("personalNumber", e.target.value)}
         />
+        {errors.personalNumber && (
+          <p style={{ color: "red", marginTop: "4px" }}>
+            {errors.personalNumber}
+          </p>
+        )}
       </div>
     </section>
   );

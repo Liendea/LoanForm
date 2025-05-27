@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./Step.css";
+import "../App.css";
 
 export default function Step3({ setFormData }) {
   //Hämta data från localstorage och sett den lagdrade datan, om den finns, som default value
@@ -8,7 +8,7 @@ export default function Step3({ setFormData }) {
   const [loanAmount, setLoanAmount] = useState(savedData.loanAmount || "");
   const [loanPurpose, setLoanPurpose] = useState(savedData.loanPurpose || "");
   const [repaymentPlan, setRepaymentPlan] = useState(
-    savedData.repaymentPlan || ""
+    savedData.repaymentPlan || "Återbetaningsplan"
   );
 
   // Uppdatera formData när lokala inputs ändras
@@ -42,11 +42,12 @@ export default function Step3({ setFormData }) {
         <br />
         <select
           name="repaymentPlan"
-          placeholder="Återbetaningsplan"
           value={repaymentPlan}
           onChange={(e) => setRepaymentPlan(e.target.value)}
         >
-          <option value="extra-kort">Återbetaningsplan</option>
+          <option value="Återbetaningsplan" disabled>
+            Återbetaningsplan
+          </option>
           <option value="extra-kort">mindre än 1 år</option>
           <option value="kort">1-3 år</option>
           <option value="mellan">3-5 år</option>

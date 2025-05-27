@@ -21,13 +21,17 @@ export default function LoanApplication({ currentStep, setCurrentStep }) {
     comment: "",
   });
 
+  const [errors, setErrors] = useState({});
+
   return (
-    <>
+    <div className="content-wrapper">
       {currentStep === 1 && (
         <Step1
           formData={formData}
           setFormData={setFormData}
           setCurrentStep={setCurrentStep}
+          errors={errors}
+          setErrors={setErrors}
         />
       )}
       {currentStep === 2 && (
@@ -49,6 +53,8 @@ export default function LoanApplication({ currentStep, setCurrentStep }) {
           formData={formData}
           setFormData={setFormData}
           setCurrentStep={setCurrentStep}
+          errors={errors}
+          setErrors={setErrors}
         />
       )}
       {currentStep === 5 && <Step5 setCurrentStep={setCurrentStep} />}
@@ -58,7 +64,8 @@ export default function LoanApplication({ currentStep, setCurrentStep }) {
         setFormData={setFormData}
         currentStep={currentStep}
         setCurrentStep={setCurrentStep}
+        errors={errors}
       />
-    </>
+    </div>
   );
 }

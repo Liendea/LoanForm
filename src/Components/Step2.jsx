@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "./Step.css";
+import "../App.css";
 
 export default function Step2({ setFormData }) {
   //Hämta data från localstorage och sett den lagdrade datan, om den finns, som default value
@@ -7,10 +7,10 @@ export default function Step2({ setFormData }) {
 
   const [isEmployed, setIsEmployed] = useState(savedData.isEmployed || false);
   const [employmentType, setEmploymentType] = useState(
-    savedData.employmentType || ""
+    savedData.employmentType || "Anställningsform"
   );
   const [annualSalary, setAnnualSalary] = useState(
-    savedData.annualSalary || ""
+    savedData.annualSalary || "Årslön"
   );
 
   useEffect(() => {
@@ -48,7 +48,9 @@ export default function Step2({ setFormData }) {
           onChange={(e) => setEmploymentType(e.target.value)}
           disabled={!isEmployed}
         >
-          <option value="Anställningsform">Anställningsform</option>
+          <option value="Anställningsform" disabled>
+            Anställningsform
+          </option>
           <option value="Tillsvidare">Tillsvidare</option>
           <option value="Provanställning">Provanställning</option>
           <option value="Vikariat">Vikariat</option>
@@ -62,7 +64,9 @@ export default function Step2({ setFormData }) {
           onChange={(e) => setAnnualSalary(e.target.value)}
         >
           {" "}
-          <option value="Årslön">Årslön</option>
+          <option value="Årslön" disabled>
+            Årslön
+          </option>
           <option value="300000>"> {`< 300'000 kr`}</option>
           <option value="300000-400000">300'000 kr - 400'000 kr</option>
           <option value="400000-500000">400'000 kr - 500'000 kr</option>

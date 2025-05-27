@@ -1,22 +1,36 @@
-import "./Navigate.css";
+import "../App.css";
 
 export default function Navigate({
   currentStep,
   setCurrentStep,
   formData,
   setFormData,
+  errors,
 }) {
   function handlePrevious() {
     if (currentStep > 1) setCurrentStep(currentStep - 1);
   }
 
   function handleNext() {
+    if (
+      Object.keys(errors).length !== 0 ||
+      formData.firstName.trim() === "" ||
+      formData.lastName.trim() === "" ||
+      formData.personalNumber.trim() === ""
+    ) {
+      alert("Vänligen fyll i alla fält");
+      return;
+    }
     if (currentStep < 4) setCurrentStep(currentStep + 1);
   }
 
   function handleSubmit() {
+    if (Object.keys(errors).length !== 0 || formData.phoneNumber === "") {
+      alert("Vänligen åtgärda felen innan du går vidare");
+      return;
+    }
     // Skriv ut inskickad data i konsollen
-    console.log("Fomulär inskcikat", formData);
+    console.log("Fomulär inskickat", formData);
 
     // rensa localstorage
     localStorage.removeItem("step1Data");

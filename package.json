@@ -1,18 +1,24 @@
 {
+  "homepage": "https://Liendea.github.io/LoanForm",
   "name": "laneformnular",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "start": "vite",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.0.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "yup": "^1.6.1"
+    "react-hook-form": "^7.56.4",
+    "zod": "^3.25.23"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
