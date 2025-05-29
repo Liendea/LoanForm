@@ -13,7 +13,7 @@ export default function Step1({ setFormData, errors, setErrors }) {
 
   // Funktion för validering
   const validateField = (fieldName, value) => {
-    const newErrors = {};
+    const newErrors = { ...errors };
     // validering
     if (fieldName === "firstName") {
       if (!value.trim()) {
