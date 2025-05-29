@@ -16,7 +16,8 @@ export default function Navigate({
       Object.keys(errors).length !== 0 ||
       formData.firstName.trim() === "" ||
       formData.lastName.trim() === "" ||
-      formData.personalNumber.trim() === ""
+      formData.personalNumber.trim() === "" ||
+      formData.annualSalary.trim() === "Årslön"
     ) {
       alert("Vänligen fyll i alla fält");
       return;

@@ -39,6 +39,8 @@ export default function LoanApplication({ currentStep, setCurrentStep }) {
           formData={formData}
           setFormData={setFormData}
           setCurrentStep={setCurrentStep}
+          errors={errors}
+          setErrors={setErrors}
         />
       )}
       {currentStep === 3 && (

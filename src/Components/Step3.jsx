@@ -48,10 +48,11 @@ export default function Step3({ setFormData }) {
           <option value="Återbetaningsplan" disabled>
             Återbetaningsplan
           </option>
-          <option value="extra-kort">mindre än 1 år</option>
+          <option value="extra-kort">{"< 1 år"} </option>
           <option value="kort">1-3 år</option>
           <option value="mellan">3-5 år</option>
           <option value="lång">5-10 år</option>
+          <option value="extra-lång">{"> 10 år"}</option>
         </select>
         <br />
         <input
