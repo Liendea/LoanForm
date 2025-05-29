@@ -60,7 +60,9 @@ export default function Step3({ setFormData }) {
           name="loanPurpose"
           placeholder="Syfte med lånet"
           value={loanPurpose}
-          onChange={(e) => setLoanPurpose(e.target.value)}
+          onChange={(e) => {
+            setLoanPurpose(e.target.value);
+          }}
         />
       </div>
     </section>

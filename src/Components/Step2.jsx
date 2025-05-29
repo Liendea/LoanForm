@@ -10,7 +10,7 @@ export default function Step2({ setFormData, errors, setErrors }) {
     savedData.employmentType || "Anställningsform"
   );
   const [annualSalary, setAnnualSalary] = useState(
-    savedData.annualSalary || "Årslön"
+    savedData.annualSalary || "*Årslön"
   );
 
   const [warning, setWarning] = useState(false);
@@ -104,8 +104,8 @@ export default function Step2({ setFormData, errors, setErrors }) {
           }}
           onBlur={(e) => validateField("annualSalary", e.target.value)}
         >
-          <option value="Årslön" disabled>
-            Årslön
+          <option value="*Årslön" disabled>
+            *Årslön
           </option>
           <option value="<300000"> {`< 300'000 kr`}</option>
           <option value="300000-400000">300'000 kr - 400'000 kr</option>

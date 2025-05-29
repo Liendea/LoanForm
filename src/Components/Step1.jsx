@@ -76,7 +76,7 @@ export default function Step1({ setFormData, errors, setErrors }) {
         <input
           type="text"
           name="firstName"
-          placeholder="Förnamn"
+          placeholder="*Förnamn"
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
           onBlur={(e) => validateField("firstName", e.target.value)}
@@ -91,7 +91,7 @@ export default function Step1({ setFormData, errors, setErrors }) {
         <input
           type="text"
           name="lastName"
-          placeholder="Efternamn"
+          placeholder="*Efternamn"
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
           onBlur={(e) => validateField("lastName", e.target.value)}
@@ -104,7 +104,6 @@ export default function Step1({ setFormData, errors, setErrors }) {
         <input
           type="date"
           name="personalNumber"
-          placeholder="Personnumer"
           value={personalNumber}
           onChange={(e) => setPersonalNumber(e.target.value)}
           onBlur={(e) => validateField("personalNumber", e.target.value)}

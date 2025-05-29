@@ -17,9 +17,10 @@ export default function Navigate({
       formData.firstName.trim() === "" ||
       formData.lastName.trim() === "" ||
       formData.personalNumber.trim() === "" ||
-      formData.annualSalary.trim() === "Årslön"
+      formData.annualSalary.trim() === "*Årslön"
     ) {
-      alert("Vänligen fyll i alla fält");
+      alert("Vänligen fyll i alla obligatoriska fält");
+
       return;
     }
     if (currentStep < 4) setCurrentStep(currentStep + 1);
@@ -27,7 +28,7 @@ export default function Navigate({
 
   function handleSubmit() {
     if (Object.keys(errors).length !== 0 || formData.phoneNumber === "") {
-      alert("Vänligen åtgärda felen innan du går vidare");
+      alert("Vänligen fyll i alla obligatoriska fält");
       return;
     }
     // Skriv ut inskickad data i konsollen

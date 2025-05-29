@@ -52,7 +52,7 @@ export default function Step4({ setFormData, errors, setErrors }) {
         <input
           type="tel"
           name="phoneNumber"
-          placeholder="Telefonnummer"
+          placeholder="*Telefonnummer"
           value={phoneNumber}
           onChange={(e) => setphoneNumber(e.target.value)}
           onBlur={(e) => validateField("phoneNumber", e.target.value)}
