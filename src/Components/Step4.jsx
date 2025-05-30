@@ -81,7 +81,7 @@ export default function Step4({ setFormData, errors, setErrors }) {
               checked={agree}
               onChange={() => setAgree((prev) => !prev)}
             />
-            <p>Jag accepterar Lila Bank's lånevillkor</p>
+            <p>Jag accepterar lånevillkoren</p>
           </div>
         </div>
       </div>

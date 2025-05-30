@@ -52,6 +52,12 @@ h4 {
 /* ===========================================*/
 /* =========== STEPS CONPONENTS =============*/
 
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
 .content-wrapper {
   width: 595px;
   height: auto;
@@ -59,6 +65,7 @@ h4 {
   border-radius: 20px;
   background-color: #ffffff7c;
 }
+
 .content,
 .form {
   display: flex;
@@ -119,14 +126,6 @@ textarea {
   height: 150px;
 }
 
-/* STEP 1 - Personalnumer date picker */
-
-input[type="date"] {
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-
 /* STEP 2 -  checkbox */
 .checkbox {
   display: flex;
@@ -144,6 +143,7 @@ input[type="checkbox"] {
 }
 
 /* STEP 3 - Loan amount  */
+
 input[type="number"] {
   appearance: none;
   -webkit-appearance: none;
@@ -155,11 +155,13 @@ input[type="number"] {
   border: none;
   justify-content: flex-start;
   font-size: 15px;
-  margin-left: 1rem;
+  margin: 0;
+  padding-left: 2px;
 }
 
 .agree p {
   margin: 0;
+  margin-left: 10px;
 }
 
 /*  STEP 5 - Confirmation */
@@ -170,12 +172,6 @@ input[type="number"] {
 
 .confirmation h3 {
   margin-top: 0rem;
-}
-
-.error-message {
-  color: red;
-  font-size: 14px;
-  margin-top: 4px;
 }
 
 /* ===========================================*/
@@ -250,6 +246,18 @@ button:hover {
 @media (max-width: 700px) {
   .content-wrapper {
     width: 90%;
+  }
+
+  /* STEP 1 - Personalnumer date picker */
+  input[type="date"] {
+    width: 85%;
+    height: 66px;
+    border-radius: 10px;
+    border: 1px solid lightgray;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-family: inherit;
+    font-size: 16px;
   }
 }
 
