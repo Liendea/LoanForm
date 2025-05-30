@@ -31,39 +31,44 @@ export default function Step3({ setFormData }) {
     <section className="content">
       <h2> LÅNEUPPGIFTER </h2>
       <div className="form">
-        <input
-          type="number"
-          name="loanAmount"
-          placeholder="Önskat lånebelopp"
-          value={loanAmount}
-          onChange={(e) => setLoanAmount(e.target.value)}
-          min="0"
-        />
-        <br />
-        <select
-          name="repaymentPlan"
-          value={repaymentPlan}
-          onChange={(e) => setRepaymentPlan(e.target.value)}
-        >
-          <option value="Återbetaningsplan" disabled>
-            Återbetaningsplan
-          </option>
-          <option value="extra-kort">{"< 1 år"} </option>
-          <option value="kort">1-3 år</option>
-          <option value="mellan">3-5 år</option>
-          <option value="lång">5-10 år</option>
-          <option value="extra-lång">{"> 10 år"}</option>
-        </select>
-        <br />
-        <input
-          type="text"
-          name="loanPurpose"
-          placeholder="Syfte med lånet"
-          value={loanPurpose}
-          onChange={(e) => {
-            setLoanPurpose(e.target.value);
-          }}
-        />
+        <div className="input-wrapper">
+          <input
+            type="number"
+            name="loanAmount"
+            placeholder="Önskat lånebelopp"
+            value={loanAmount}
+            onChange={(e) => setLoanAmount(e.target.value)}
+            min="0"
+          />
+        </div>
+        <div className="input-wrapper">
+          <select
+            name="repaymentPlan"
+            value={repaymentPlan}
+            onChange={(e) => setRepaymentPlan(e.target.value)}
+          >
+            <option value="Återbetaningsplan" disabled>
+              Återbetaningsplan
+            </option>
+            <option value="extra-kort">{"< 1 år"} </option>
+            <option value="kort">1-3 år</option>
+            <option value="mellan">3-5 år</option>
+            <option value="lång">5-10 år</option>
+            <option value="extra-lång">{"> 10 år"}</option>
+          </select>
+        </div>
+
+        <div className="input-wrapper">
+          <input
+            type="text"
+            name="loanPurpose"
+            placeholder="Syfte med lånet"
+            value={loanPurpose}
+            onChange={(e) => {
+              setLoanPurpose(e.target.value);
+            }}
+          />
+        </div>
       </div>
     </section>
   );

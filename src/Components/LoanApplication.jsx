@@ -19,6 +19,7 @@ export default function LoanApplication({ currentStep, setCurrentStep }) {
     repaymentPlan: "",
     phoneNumber: "",
     comment: "",
+    agree: false,
   });
 
   const [errors, setErrors] = useState({});

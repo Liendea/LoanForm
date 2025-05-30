@@ -7,6 +7,7 @@ export default function Step4({ setFormData, errors, setErrors }) {
 
   const [phoneNumber, setphoneNumber] = useState(savedData.phoneNumber || "");
   const [comment, setComment] = useState(savedData.comment || "");
+  const [agree, setAgree] = useState(savedData.agree || "");
 
   // Funktion för validering
   const validateField = (fieldName, value) => {
@@ -33,6 +34,7 @@ export default function Step4({ setFormData, errors, setErrors }) {
       const currentData = {
         phoneNumber,
         comment,
+        agree,
       };
 
       // uppdatera formdatan med den föregående datan och lägg till nuvarande datan
@@ -43,27 +45,26 @@ export default function Step4({ setFormData, errors, setErrors }) {
       // Spara i localstorage
       localStorage.setItem("step4Data", JSON.stringify(currentData));
     }
-  }, [phoneNumber, comment, errors, setFormData]);
+  }, [phoneNumber, comment, agree, errors, setFormData]);
 
   return (
     <section className="content">
       <h2> ÖVRIGT </h2>
       <div className="form">
-        <input
-          type="tel"
-          name="phoneNumber"
-          placeholder="*Telefonnummer"
-          value={phoneNumber}
-          onChange={(e) => setphoneNumber(e.target.value)}
-          onBlur={(e) => validateField("phoneNumber", e.target.value)}
-        />
-        {errors.phoneNumber && (
-          <p style={{ color: "red", marginBottom: "4px", textAlign: "left" }}>
-            {errors.phoneNumber}
-          </p>
-        )}
+        <div className="input-wrapper">
+          <input
+            type="tel"
+            name="phoneNumber"
+            placeholder="*Telefonnummer"
+            value={phoneNumber}
+            onChange={(e) => setphoneNumber(e.target.value)}
+            onBlur={(e) => validateField("phoneNumber", e.target.value)}
+          />
+          {errors.phoneNumber && (
+            <p className="error-message">{errors.phoneNumber}</p>
+          )}
+        </div>
 
-        <br />
         <textarea
           type="text"
           name="comment"
@@ -71,6 +72,18 @@ export default function Step4({ setFormData, errors, setErrors }) {
           value={comment}
           onChange={(e) => setComment(e.target.value)}
         />
+
+        <div className="input-wrapper">
+          <div className="checkbox agree">
+            <input
+              type="checkbox"
+              name="agree"
+              checked={agree}
+              onChange={() => setAgree((prev) => !prev)}
+            />
+            <p>Jag accepterar Lila Bank's lånevillkor</p>
+          </div>
+        </div>
       </div>
     </section>
   );

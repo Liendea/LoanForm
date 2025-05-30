@@ -73,48 +73,44 @@ export default function Step1({ setFormData, errors, setErrors }) {
     <section className="content">
       <h2> PERSONUPPGIFTER </h2>
       <div className="form">
-        <input
-          type="text"
-          name="firstName"
-          placeholder="*Förnamn"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-          onBlur={(e) => validateField("firstName", e.target.value)}
-        />
-        {errors.firstName && (
-          <p style={{ color: "red", marginBottom: "4px", fontSize: "14px" }}>
-            {errors.firstName}
-          </p>
-        )}
-
-        <br />
-        <input
-          type="text"
-          name="lastName"
-          placeholder="*Efternamn"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-          onBlur={(e) => validateField("lastName", e.target.value)}
-        />
-        {errors.lastName && (
-          <p style={{ color: "red", marginTop: "4px", fontSize: "14px" }}>
-            {errors.lastName}
-          </p>
-        )}
-
-        <br />
-        <input
-          type="date"
-          name="personalNumber"
-          value={personalNumber}
-          onChange={(e) => setPersonalNumber(e.target.value)}
-          onBlur={(e) => validateField("personalNumber", e.target.value)}
-        />
-        {errors.personalNumber && (
-          <p style={{ color: "red", marginTop: "4px", fontSize: "14px" }}>
-            {errors.personalNumber}
-          </p>
-        )}
+        <div className="input-wrapper">
+          <input
+            type="text"
+            name="firstName"
+            placeholder="*Förnamn"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            onBlur={(e) => validateField("firstName", e.target.value)}
+          />
+          {errors.firstName && (
+            <p className="error-message">{errors.firstName}</p>
+          )}
+        </div>
+        <div className="input-wrapper">
+          <input
+            type="text"
+            name="lastName"
+            placeholder="*Efternamn"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            onBlur={(e) => validateField("lastName", e.target.value)}
+          />
+          {errors.lastName && (
+            <p className="error-message">{errors.lastName}</p>
+          )}
+        </div>
+        <div className="input-wrapper">
+          <input
+            type="date"
+            name="personalNumber"
+            value={personalNumber}
+            onChange={(e) => setPersonalNumber(e.target.value)}
+            onBlur={(e) => validateField("personalNumber", e.target.value)}
+          />
+          {errors.personalNumber && (
+            <p className="error-message">{errors.personalNumber}</p>
+          )}
+        </div>
       </div>
     </section>
   );
