@@ -119,13 +119,19 @@ textarea {
   height: 150px;
 }
 
+/* STEP 1 - Personalnumer date picker */
+
+input[type="date"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
 /* STEP 2 -  checkbox */
 .checkbox {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-right: auto;
-  margin-left: auto;
   font-size: 14px;
 }
 
@@ -133,9 +139,15 @@ input[type="checkbox"] {
   width: 20px;
   height: 20px;
   accent-color: #007bff;
-  margin-right: 1rem;
   margin-bottom: 3px;
   cursor: pointer;
+}
+
+/* STEP 3 - Loan amount  */
+input[type="number"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
 /* STEP 4 -  checkbox - Agree to terms & cnónditions */
