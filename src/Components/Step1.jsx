@@ -82,7 +82,7 @@ export default function Step1({ setFormData, errors, setErrors }) {
           onBlur={(e) => validateField("firstName", e.target.value)}
         />
         {errors.firstName && (
-          <p style={{ color: "red", marginBottom: "4px", textAlign: "left" }}>
+          <p style={{ color: "red", marginBottom: "4px", fontSize: "14px" }}>
             {errors.firstName}
           </p>
         )}
@@ -97,7 +97,9 @@ export default function Step1({ setFormData, errors, setErrors }) {
           onBlur={(e) => validateField("lastName", e.target.value)}
         />
         {errors.lastName && (
-          <p style={{ color: "red", marginTop: "4px" }}>{errors.lastName}</p>
+          <p style={{ color: "red", marginTop: "4px", fontSize: "14px" }}>
+            {errors.lastName}
+          </p>
         )}
 
         <br />
@@ -109,7 +111,7 @@ export default function Step1({ setFormData, errors, setErrors }) {
           onBlur={(e) => validateField("personalNumber", e.target.value)}
         />
         {errors.personalNumber && (
-          <p style={{ color: "red", marginTop: "4px" }}>
+          <p style={{ color: "red", marginTop: "4px", fontSize: "14px" }}>
             {errors.personalNumber}
           </p>
         )}

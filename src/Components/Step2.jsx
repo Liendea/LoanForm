@@ -114,12 +114,12 @@ export default function Step2({ setFormData, errors, setErrors }) {
           <option value="600000">{`> 600'000 kr`}</option>
         </select>
         {errors.annualSalary && (
-          <p style={{ color: "red", marginTop: "4px" }}>
+          <p style={{ color: "red", marginTop: "4px", fontSize: "12px" }}>
             {errors.annualSalary}
           </p>
         )}
         {warning && (
-          <p style={{ color: "purple", marginTop: "4px" }}>
+          <p style={{ color: "purple", marginTop: "4px", fontSize: "12px" }}>
             Observera att en låg inkomst kan påverka din ansökan
           </p>
         )}
