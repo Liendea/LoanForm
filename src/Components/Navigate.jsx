@@ -6,11 +6,14 @@ export default function Navigate({
   formData,
   setFormData,
   errors,
+  setIsLoading,
 }) {
+  // PREVIOUS
   function handlePrevious() {
     if (currentStep > 1) setCurrentStep(currentStep - 1);
   }
 
+  // NEXT
   function handleNext() {
     if (
       Object.keys(errors).length !== 0 ||
@@ -26,37 +29,46 @@ export default function Navigate({
     if (currentStep < 4) setCurrentStep(currentStep + 1);
   }
 
+  // SUBMIT
   function handleSubmit() {
     if (Object.keys(errors).length !== 0 || formData.phoneNumber === "") {
       alert("Vänligen fyll i alla obligatoriska fält");
       return;
     }
-    // Skriv ut inskickad data i konsollen
-    console.log("Fomulär inskickat", formData);
 
-    // rensa localstorage
-    localStorage.removeItem("step1Data");
-    localStorage.removeItem("step2Data");
-    localStorage.removeItem("step3Data");
-    localStorage.removeItem("step4Data");
+    setIsLoading(true);
 
-    // Nollställ
-    setFormData({
-      firstName: "",
-      lastName: "",
-      age: "",
-      isEmployed: false,
-      employmentType: "",
-      annualSalary: "",
-      loanAmount: "",
-      loanPurpose: "",
-      repaymentPlan: "",
-      phoneNumber: "",
-      comment: "",
-    });
+    // Timer på 1 sekund
+    setTimeout(() => {
+      // Skriv ut inskickad data i konsollen
+      console.log("Fomulär inskickat", formData);
 
-    //gå till steg5
-    setCurrentStep(5);
+      // Nollställ
+      setFormData({
+        firstName: "",
+        lastName: "",
+        age: "",
+        isEmployed: false,
+        employmentType: "",
+        annualSalary: "",
+        loanAmount: "",
+        loanPurpose: "",
+        repaymentPlan: "",
+        phoneNumber: "",
+        comment: "",
+      });
+
+      // rensa localstorage
+      localStorage.removeItem("step1Data");
+      localStorage.removeItem("step2Data");
+      localStorage.removeItem("step3Data");
+      localStorage.removeItem("step4Data");
+
+      setIsLoading(false);
+
+      //gå till steg5
+      setCurrentStep(5);
+    }, 2000);
   }
 
   return (

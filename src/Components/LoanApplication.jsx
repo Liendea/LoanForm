@@ -23,6 +23,15 @@ export default function LoanApplication({ currentStep, setCurrentStep }) {
   });
 
   const [errors, setErrors] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+
+  if (isLoading) {
+    return (
+      <div className="loader-container">
+        <div className="loader"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="content-wrapper">
@@ -68,6 +77,7 @@ export default function LoanApplication({ currentStep, setCurrentStep }) {
         currentStep={currentStep}
         setCurrentStep={setCurrentStep}
         errors={errors}
+        setIsLoading={setIsLoading}
       />
     </div>
   );
