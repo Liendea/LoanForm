@@ -127,6 +127,7 @@ textarea {
   resize: none;
   padding-top: 10px;
   height: 150px;
+  margin-top: 2rem;
 }
 
 /* STEP 2 -  checkbox */
@@ -358,6 +359,9 @@ button:hover {
 @media (max-width: 600px) {
   body {
     padding: 0;
+  }
+  main {
+    height: 90dvh;
   }
 
   .content-wrapper {

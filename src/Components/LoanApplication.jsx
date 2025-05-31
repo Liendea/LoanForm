@@ -10,7 +10,7 @@ export default function LoanApplication({ currentStep, setCurrentStep }) {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
-    age: "",
+    age: null,
     isEmployed: false,
     employmentType: "",
     annualSalary: "",
@@ -77,6 +77,7 @@ export default function LoanApplication({ currentStep, setCurrentStep }) {
         currentStep={currentStep}
         setCurrentStep={setCurrentStep}
         errors={errors}
+        setErrors={setErrors}
         setIsLoading={setIsLoading}
       />
     </div>

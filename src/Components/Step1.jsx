@@ -18,7 +18,7 @@ export default function Step1({ setFormData, errors, setErrors }) {
   // Funktion för validering
   const validateField = (fieldName, value) => {
     const newErrors = { ...errors };
-    // validering
+
     if (fieldName === "firstName") {
       if (!value.trim()) {
         newErrors.firstName = "*Förnamn krävs";
@@ -37,7 +37,6 @@ export default function Step1({ setFormData, errors, setErrors }) {
 
     if (fieldName === "age") {
       const numericAge = Number(value);
-
       if (!value || isNaN(numericAge) || numericAge < 18) {
         newErrors.age = "*Ange giltig ålder (minst 18 år)";
       } else {
@@ -102,7 +101,6 @@ export default function Step1({ setFormData, errors, setErrors }) {
         <div className="input-wrapper">
           <input
             type="number"
-            imputmode="numeric"
             name="age"
             placeholder="*Ålder"
             value={age === null ? "" : age}
