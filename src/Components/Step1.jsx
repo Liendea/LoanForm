@@ -50,22 +50,21 @@ export default function Step1({ setFormData, errors, setErrors }) {
   // Uppdatera formData när lokala inputs ändras
   useEffect(() => {
     // om inga fel finns , uppdatra formdatan
-    if (Object.keys(errors).length === 0) {
-      const currentData = {
-        firstName,
-        lastName,
-        age,
-      };
 
-      // uppdatera formdatan med den föregående datan och lägg till nuvarande datan
-      setFormData((prev) => ({
-        ...prev,
-        ...currentData,
-      }));
+    const currentData = {
+      firstName,
+      lastName,
+      age,
+    };
 
-      // Spara i localstorage
-      localStorage.setItem("step1Data", JSON.stringify(currentData));
-    }
+    // uppdatera formdatan med den föregående datan och lägg till nuvarande datan
+    setFormData((prev) => ({
+      ...prev,
+      ...currentData,
+    }));
+
+    // Spara i localstorage
+    localStorage.setItem("step1Data", JSON.stringify(currentData));
   }, [firstName, lastName, age, errors, setFormData]);
 
   return (

@@ -12,7 +12,6 @@ export default function Step2({ setFormData, errors, setErrors }) {
   const [annualSalary, setAnnualSalary] = useState(
     savedData.annualSalary || "*Årslön"
   );
-
   const [warning, setWarning] = useState(false);
 
   // Funktion för validering
@@ -26,7 +25,6 @@ export default function Step2({ setFormData, errors, setErrors }) {
         delete newErrors.annualSalary;
       }
     }
-
     setErrors(newErrors);
   };
 
@@ -40,20 +38,18 @@ export default function Step2({ setFormData, errors, setErrors }) {
   }
 
   useEffect(() => {
-    if (Object.keys(errors).length === 0) {
-      const currentData = {
-        isEmployed,
-        employmentType,
-        annualSalary,
-      };
+    const currentData = {
+      isEmployed,
+      employmentType,
+      annualSalary,
+    };
 
-      setFormData((prev) => ({
-        ...prev,
-        ...currentData,
-      }));
-      // Spara i localstorage
-      localStorage.setItem("step2Data", JSON.stringify(currentData));
-    }
+    setFormData((prev) => ({
+      ...prev,
+      ...currentData,
+    }));
+    // Spara i localstorage
+    localStorage.setItem("step2Data", JSON.stringify(currentData));
   }, [
     isEmployed,
     employmentType,

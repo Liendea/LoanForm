@@ -30,21 +30,20 @@ export default function Step4({ setFormData, errors, setErrors }) {
   // Uppdatera formData när lokala inputs ändras
   useEffect(() => {
     // om inga fel finns , uppdatra formdatan
-    if (Object.keys(errors).length === 0) {
-      const currentData = {
-        phoneNumber,
-        comment,
-        agree,
-      };
 
-      // uppdatera formdatan med den föregående datan och lägg till nuvarande datan
-      setFormData((prev) => ({
-        ...prev,
-        ...currentData,
-      }));
-      // Spara i localstorage
-      localStorage.setItem("step4Data", JSON.stringify(currentData));
-    }
+    const currentData = {
+      phoneNumber,
+      comment,
+      agree,
+    };
+
+    // uppdatera formdatan med den föregående datan och lägg till nuvarande datan
+    setFormData((prev) => ({
+      ...prev,
+      ...currentData,
+    }));
+    // Spara i localstorage
+    localStorage.setItem("step4Data", JSON.stringify(currentData));
   }, [phoneNumber, comment, agree, errors, setFormData]);
 
   return (
