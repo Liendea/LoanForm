@@ -32,6 +32,9 @@ main {
   width: 100%;
 }
 
+/* ===========================================*/
+/* ============= TEXT SETTINGS ==============*/
+
 /* Form - Heading */
 h2 {
   font-size: 40px;
@@ -49,14 +52,14 @@ h4 {
   font-weight: 400;
 }
 
-/* ===========================================*/
-/* =========== STEPS CONPONENTS =============*/
-
 .error-message {
   color: red;
   font-size: 14px;
   margin-top: 4px;
 }
+
+/* ===========================================*/
+/* =========== STEPS CONPONENTS =============*/
 
 .content-wrapper {
   width: 595px;
@@ -142,12 +145,21 @@ input[type="checkbox"] {
   cursor: pointer;
 }
 
-/* STEP 3 - Loan amount  */
+/* Step 1 - Age &  STEP 3 - Loan amount  */
+/* Ta bort pilarna */
 
 input[type="number"] {
   appearance: none;
   -webkit-appearance: none;
-  -moz-appearance: none;
+  -moz-appearance: textfield;
+  margin: 0;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 /* STEP 4 -  checkbox - Agree to terms & cnónditions */
@@ -246,18 +258,6 @@ button:hover {
 @media (max-width: 700px) {
   .content-wrapper {
     width: 90%;
-  }
-
-  /* STEP 1 - Personalnumer date picker */
-  input[type="date"] {
-    width: 85%;
-    height: 66px;
-    border-radius: 10px;
-    border: 1px solid lightgray;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    font-family: inherit;
-    font-size: 16px;
   }
 }
 

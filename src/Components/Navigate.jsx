@@ -16,7 +16,7 @@ export default function Navigate({
       Object.keys(errors).length !== 0 ||
       formData.firstName.trim() === "" ||
       formData.lastName.trim() === "" ||
-      formData.personalNumber.trim() === "" ||
+      formData.age === "" ||
       formData.annualSalary.trim() === "*Årslön"
     ) {
       alert("Vänligen fyll i alla obligatoriska fält");
@@ -44,7 +44,7 @@ export default function Navigate({
     setFormData({
       firstName: "",
       lastName: "",
-      personalNumber: "",
+      age: "",
       isEmployed: false,
       employmentType: "",
       annualSalary: "",

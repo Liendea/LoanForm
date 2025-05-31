@@ -7,8 +7,8 @@ export default function Step1({ setFormData, errors, setErrors }) {
 
   const [firstName, setFirstName] = useState(savedData.firstName || "");
   const [lastName, setLastName] = useState(savedData.lastName || "");
-  const [personalNumber, setPersonalNumber] = useState(
-    savedData.personalNumber || ""
+  const [age, setAge] = useState(
+    savedData.age !== undefined ? Number(savedData.age) : null
   );
 
   // Funktion för validering
@@ -31,17 +31,13 @@ export default function Step1({ setFormData, errors, setErrors }) {
       }
     }
 
-    if (fieldName === "personalNumber") {
-      if (!value) {
-        newErrors.personalNumber = "*Personnummer krävs";
+    if (fieldName === "age") {
+      const numericAge = Number(value);
+
+      if (!value || isNaN(numericAge) || numericAge < 18) {
+        newErrors.age = "*Ange giltig ålder (minst 18 år)";
       } else {
-        const minDate = new Date("2007-01-01");
-        const selectedDate = new Date(value);
-        if (selectedDate > minDate) {
-          newErrors.personalNumber = "*Du måste vara minst 18 år";
-        } else {
-          delete newErrors.personalNumber;
-        }
+        delete newErrors.age;
       }
     }
 
@@ -55,7 +51,7 @@ export default function Step1({ setFormData, errors, setErrors }) {
       const currentData = {
         firstName,
         lastName,
-        personalNumber,
+        age,
       };
 
       // uppdatera formdatan med den föregående datan och lägg till nuvarande datan
@@ -67,7 +63,7 @@ export default function Step1({ setFormData, errors, setErrors }) {
       // Spara i localstorage
       localStorage.setItem("step1Data", JSON.stringify(currentData));
     }
-  }, [firstName, lastName, personalNumber, errors, setFormData]);
+  }, [firstName, lastName, age, errors, setFormData]);
 
   return (
     <section className="content">
@@ -101,15 +97,17 @@ export default function Step1({ setFormData, errors, setErrors }) {
         </div>
         <div className="input-wrapper">
           <input
-            type="date"
-            name="personalNumber"
-            value={personalNumber}
-            onChange={(e) => setPersonalNumber(e.target.value)}
-            onBlur={(e) => validateField("personalNumber", e.target.value)}
+            type="number"
+            name="age"
+            placeholder="*Ålder"
+            value={age === null ? "" : age}
+            onChange={(e) => {
+              const value = e.target.value;
+              setAge(value === "" ? null : Number(value));
+            }}
+            onBlur={(e) => validateField("age", e.target.value)}
           />
-          {errors.personalNumber && (
-            <p className="error-message">{errors.personalNumber}</p>
-          )}
+          {errors.age && <p className="error-message">{errors.age}</p>}
         </div>
       </div>
     </section>
