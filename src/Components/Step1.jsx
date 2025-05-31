@@ -8,7 +8,11 @@ export default function Step1({ setFormData, errors, setErrors }) {
   const [firstName, setFirstName] = useState(savedData.firstName || "");
   const [lastName, setLastName] = useState(savedData.lastName || "");
   const [age, setAge] = useState(
-    savedData.age !== undefined ? Number(savedData.age) : null
+    savedData.age !== undefined &&
+      savedData.age !== "" &&
+      savedData.age !== null
+      ? Number(savedData.age)
+      : null
   );
 
   // Funktion för validering
@@ -98,6 +102,7 @@ export default function Step1({ setFormData, errors, setErrors }) {
         <div className="input-wrapper">
           <input
             type="number"
+            imputmode="numeric"
             name="age"
             placeholder="*Ålder"
             value={age === null ? "" : age}

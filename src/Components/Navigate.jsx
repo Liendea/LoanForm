@@ -20,6 +20,7 @@ export default function Navigate({
       formData.firstName.trim() === "" ||
       formData.lastName.trim() === "" ||
       formData.age === "" ||
+      formData.age === null ||
       formData.annualSalary.trim() === "*Årslön"
     ) {
       alert("Vänligen fyll i alla obligatoriska fält");
@@ -68,7 +69,7 @@ export default function Navigate({
 
       //gå till steg5
       setCurrentStep(5);
-    }, 2000);
+    }, 1000);
   }
 
   return (
